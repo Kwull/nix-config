@@ -31,7 +31,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    net-tools
     curl
     dnsutils
     btop
