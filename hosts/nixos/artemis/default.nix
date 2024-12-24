@@ -38,14 +38,6 @@
     enable = true;
     userEmail = "kwull@kwull.com";
     userName = "Uladzimir Kazakevich";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      pull = {
-        rebase = true;
-      };
-    };
   };
 
   programs.htop = {
