@@ -14,57 +14,17 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-
-  home-manager.users.kwull = { 
-    programs.home-manager.enable = true;
-    programs.nix-index.enable = true;
-
-    programs.bash.enable = true;
-
-    programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        autosuggestion.enable = true;
-    };
-
-    programs.git = {
-        enable = true;
-        userEmail = "kwull@kwull.com";
-        userName = "Uladzimir Kazakevich";
-        diff-so-fancy.enable = true;
-        lfs.enable = true;
-        extraConfig = {
-            init = {
-                defaultBranch = "main";
-            };
-            pull = {
-                rebase = true;
-            };
-        };    
-    };
-
-    programs.htop = {
-        enable = true;
-        settings.show_program_path = true;
-    };
-
-    programs.tmux = {
-        enable = true;
-        clock24 = true;
-        historyLimit = 10000;
-    };
-  };
-
+  programs.bash.enable = true;
+  programs.zsh.enable = true;
+  programs.git.enable = true;
+  programs.htop.enable = true;
+  programs.tmux.enable = true;
+  
   users.users.kwull = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
     hashedPassword = "${HASHED_PASSWORD}";
-    packages = with pkgs; [
-      home-manager
-    ];
   };
 
   security.sudo.wheelNeedsPassword = false;
