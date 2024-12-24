@@ -36,7 +36,7 @@ else
     sync
 
     mkfs.ext4 -L nixos $DEVICE-part1
-    mkfswap -L swap $DEVICE-part2
+    mkswap -L swap $DEVICE-part2
     mkfs.fat -F 32 -n boot  $DEVICE-part3
 
     sync
