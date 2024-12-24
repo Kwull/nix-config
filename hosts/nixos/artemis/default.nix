@@ -38,8 +38,6 @@
     enable = true;
     userEmail = "kwull@kwull.com";
     userName = "Uladzimir Kazakevich";
-    diff-so-fancy.enable = true;
-    lfs.enable = true;
     extraConfig = {
       init = {
         defaultBranch = "main";
