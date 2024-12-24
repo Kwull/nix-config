@@ -73,7 +73,7 @@ fi
 export HASHED_PASSWORD
 
 # download the configuation.nix template
-curl -s "https://raw.githubusercontent.com/kwull/nix-config/main/hosts/nixos/artemis/default.nix?$(date +%Y-%m-%d-%s)12" > configuration.nix
+curl -s "https://raw.githubusercontent.com/kwull/nix-config/main/hosts/nixos/artemis/default.nix?$(date +%Y-%m-%d-%s)122" > configuration.nix
 
 # process the template
 envsubst "${HASHED_PASSWORD}" < configuration.nix > /mnt/etc/nixos/configuration.nix

@@ -14,6 +14,8 @@
 
   time.timeZone = "Europe/Warsaw";
 
+  programs.zsh.enable = true;
+
   users.users.kwull = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
