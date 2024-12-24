@@ -14,42 +14,62 @@
 
   time.timeZone = "Europe/Warsaw";
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
+  home-manager.users.kwull = { 
+    programs.home-manager.enable = true;
+    programs.nix-index.enable = true;
+
+    programs.bash.enable = true;
+
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        autosuggestion.enable = true;
+    };
+
+    programs.git = {
+        enable = true;
+        userEmail = "kwull@kwull.com";
+        userName = "Uladzimir Kazakevich";
+        diff-so-fancy.enable = true;
+        lfs.enable = true;
+        extraConfig = {
+            init = {
+                defaultBranch = "main";
+            };
+            pull = {
+                rebase = true;
+            };
+        };    
+    };
+
+    programs.htop = {
+        enable = true;
+        settings.show_program_path = true;
+    };
+
+    programs.tmux = {
+        enable = true;
+        clock24 = true;
+        historyLimit = 10000;
+    };
+  };
+
   users.users.kwull = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
     hashedPassword = "${HASHED_PASSWORD}";
-    #packages = with pkgs; [];
+    packages = with pkgs; [
+      home-manager
+    ];
   };
 
   security.sudo.wheelNeedsPassword = false;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
-
-  programs.bash.enable = true;
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-  };
-
-  programs.git = {
-    enable = true;
-    userEmail = "kwull@kwull.com";
-    userName = "Uladzimir Kazakevich";
-  };
-
-  programs.htop = {
-    enable = true;
-    settings.show_program_path = true;
-  };
-
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    historyLimit = 10000;
-  };
 
   environment.systemPackages = with pkgs; [
     net-tools
