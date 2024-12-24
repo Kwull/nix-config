@@ -14,11 +14,6 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  programs.zsh.enable = true;
-  programs.git.enable = true;
-  programs.htop.enable = true;
-  programs.tmux.enable = true;
-
   users.users.kwull = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
