@@ -14,8 +14,6 @@
 
   time.timeZone = "Europe/Warsaw";
 
-  programs.zsh.enable = true;
-
   users.users.kwull = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
@@ -26,6 +24,11 @@
   security.sudo.wheelNeedsPassword = false;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
+
+  programs = { 
+    zsh.enable = true;
+    nix-ld.enable = true; 
+  };
 
   environment.systemPackages = with pkgs; [
     net-tools
@@ -60,6 +63,8 @@
     nerdfonts
     unzip
     bash
+    zsh-autosuggestions
+    zsh-syntax-highlighting
   ];  
 
   networking = {
