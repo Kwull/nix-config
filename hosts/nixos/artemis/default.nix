@@ -50,7 +50,6 @@
     nmap
     qemu
     python3
-    python-setuptools
     smartmontools
     tmux
     mosh
