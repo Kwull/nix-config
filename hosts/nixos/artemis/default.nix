@@ -14,7 +14,7 @@
     extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 ${PUBLIC_KEY}"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9Dlv5MQQNdpzpgYjZww1/L5k9fVVVIR7kTB2q/lS/J kwull"
     ];
   };
 
