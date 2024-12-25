@@ -13,7 +13,7 @@
       pkgsLinuxUnstable = import nixpkgs-unstable { system = "x86_64-linux"; };
     in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.artemis = nixpkgs.lib.nixosSystem {
         # NOTE: Change this to aarch64-linux if you are on ARM
         system = "x86_64-linux";
         modules = [ ./hosts/nixos/artemis/default.nix ];

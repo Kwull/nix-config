@@ -36,8 +36,8 @@
 
   ## DEPLOYMENT
   #deployment.targetHost = name;
-  deployment = {
-    targetUser = "root";
-    buildOnTarget = true;
-  };
+  #deployment = {
+  #  targetUser = "root";
+  #  buildOnTarget = true;
+  #};
 }
