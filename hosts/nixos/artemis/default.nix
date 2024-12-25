@@ -1,24 +1,26 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
-  system.stateVersion = "24.11";
-
-  nix.settings = { 
-    auto-optimise-store = true;
-    experimental-features = [ "nix-command" "flakes" ];
-  };
+  imports = [ 
+    ./hardware-configuration.nix 
+    ./../../common/nixos-config.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
-  time.timeZone = "Europe/Warsaw";
-
   users.users.kwull = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
-    hashedPassword = "${HASHED_PASSWORD}";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 ${PUBLIC_KEY}"
+    ];
+  };
+
+  networking = {
+    firewall.enable = false;
+    hostName = "artemis";
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -65,21 +67,7 @@
     zsh-syntax-highlighting
   ];  
 
-  networking = {
-    firewall.enable = false;
-    hostName = "artemis";
-  };
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
-      };
-    };
-  };
-
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
+  # services.tailscale.useRoutingFeatures = "server";
 }
