@@ -31,6 +31,7 @@
 
   programs = { 
     zsh.enable = true;
+    nix-ld.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
