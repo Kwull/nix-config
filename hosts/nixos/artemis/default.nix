@@ -3,6 +3,7 @@
   imports = [ 
     ./hardware-configuration.nix 
     ./../../common/global
+    ./../../common/users/kwull
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -11,15 +12,6 @@
 
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # services.tailscale.useRoutingFeatures = "server";
-
-  users.users.kwull = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9Dlv5MQQNdpzpgYjZww1/L5k9fVVVIR7kTB2q/lS/J kwull"
-    ];
-  };
 
   networking = {
     firewall.enable = false;
