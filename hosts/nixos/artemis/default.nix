@@ -4,12 +4,11 @@
     ./hardware-configuration.nix 
     ./../../common/global
     ./../../common/users/kwull
+    ./../../common/optional/systemd-boot.nix
+  #  ./../../common/optional/tailscale-exit-node.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   services.qemuGuest.enable = true;
-
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # services.tailscale.useRoutingFeatures = "server";
 
