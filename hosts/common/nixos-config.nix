@@ -7,6 +7,8 @@
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
+  security.sudo.wheelNeedsPassword = false;
+
   virtualisation = {
     docker = {
       enable = true;

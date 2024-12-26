@@ -7,7 +7,10 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  services.qemuGuest.enable = true;
+
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  # services.tailscale.useRoutingFeatures = "server";
 
   users.users.kwull = {
     isNormalUser = true;
@@ -23,13 +26,11 @@
     hostName = "artemis";
   };
 
-  security.sudo.wheelNeedsPassword = false;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = [ pkgs.zsh ];
 
   programs = { 
     zsh.enable = true;
-    nix-ld.enable = true; 
   };
 
   environment.systemPackages = with pkgs; [
@@ -67,7 +68,4 @@
     zsh-syntax-highlighting
   ];  
 
-  services.openssh.enable = true;
-  services.qemuGuest.enable = true;
-  # services.tailscale.useRoutingFeatures = "server";
 }

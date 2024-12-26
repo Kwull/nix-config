@@ -16,7 +16,7 @@
       nixosConfigurations.artemis = nixpkgs.lib.nixosSystem {
         # NOTE: Change this to aarch64-linux if you are on ARM
         system = "x86_64-linux";
-        modules = [ ./hosts/nixos/artemis/default.nix ];
+        modules = [ ./hosts/nixos/artemis ];
       };
     };
 }
