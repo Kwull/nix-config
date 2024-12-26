@@ -9,7 +9,7 @@
       ./nix.nix
       ./openssh.nix
       ./tailscale.nix
-    ]
+    ];
  #   ++ (builtins.attrValues outputs.nixosModules);
 
   networking.domain = "kwull.net";
