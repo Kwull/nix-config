@@ -30,9 +30,5 @@ in {
   #  neededForUsers = true;
   #};
 
-  h#ome-manager.users.kwull = import ../../../../home/kwull/${config.networking.hostName}.nix;
-
-  security.pam.services = {
-    swaylock = {};
-  };
+  #home-manager.users.kwull = import ../../../../home/kwull/${config.networking.hostName}.nix;
 }
