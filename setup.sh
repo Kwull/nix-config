@@ -50,42 +50,10 @@ fi
 
 nixos-generate-config --root /mnt
 
-HASHED_PW_FILE="$HOME/.hashed_pw"
-
-# Check if the hashed password file exists
-if [ -f "$HASHED_PW_FILE" ]; then
-    # Read the hashed password from the file
-    HASHED_PASSWORD=$(cat "$HASHED_PW_FILE")
-else
-    # Check if $PW is set
-    if [ -z "${PW}" ]; then
-        # Prompt the user for a value
-        read -p "Enter user password: " -sr PW
-        echo
-    fi
-
-    # Generate the hashed password
-    HASHED_PASSWORD=$(mkpasswd "$PW")
-    
-
-    # Store the hashed password in the file
-    echo "$HASHED_PASSWORD" > "$HASHED_PW_FILE"
-fi
-export HASHED_PASSWORD
-
 # download the configuation.nix template
 curl -s "https://raw.githubusercontent.com/kwull/nix-config/main/hosts/nixos/artemis/default.nix?x$(date +%s)" > configuration.nix
 
-# process the template
-envsubst "${HASHED_PASSWORD}" < configuration.nix > /mnt/etc/nixos/configuration.nix
-
 nixos-install
-
-# Check if the directory exists
-if [ -d "/mnt/home/kwull" ]; then
-    touch /mnt/home/kwull/.zshrc
-    chown 1000:100 /mnt/home/kwull/.zshrc
-fi
 
 while true; do
     read -p "Do you want to reboot now? (y/n) " yn
