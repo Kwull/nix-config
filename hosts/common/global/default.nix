@@ -1,40 +1,26 @@
-{ config, pkgs, name, ... }:
+{ inputs, outputs, ... }:
 
 {
-  time.timeZone = "Europe/Warsaw";
-  system.stateVersion = "24.11";
+  imports =
+    [
+      ./common-packages.nix
+      ./docker.nix
+      ./locale.nix
+      ./nix.nix
+      ./openssh.nix
+      ./tailscale.nix
+    ]
+ #   ++ (builtins.attrValues outputs.nixosModules);
 
-  services.openssh.enable = true;
-  services.tailscale.enable = true;
+  networking.domain = "kwull.net";
+
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = [ pkgs.zsh ];
+
+  programs = { 
+    zsh.enable = true;
+    nix-ld.enable = true;
+  };
 
   security.sudo.wheelNeedsPassword = false;
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune = {
-        enable = true;
-        dates = "weekly";
-      };
-    };
-  };
-
-  nix = {
-    settings = {
-        experimental-features = [ "nix-command" "flakes" ];
-        warn-dirty = false;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 5";
-    };
-  };
-
-  ## DEPLOYMENT
-  #deployment.targetHost = name;
-  #deployment = {
-  #  targetUser = "root";
-  #  buildOnTarget = true;
-  #};
 }

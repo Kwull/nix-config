@@ -21,14 +21,5 @@ in {
     ];
 
     openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/kwull/ssh.pub);
-    #hashedPasswordFile = config.sops.secrets.kwull-password.path;
-    #packages = [pkgs.home-manager];
   };
-
-  #sops.secrets.kwull-password = {
-  #  sopsFile = ../../secrets.yaml;
-  #  neededForUsers = true;
-  #};
-
-  #home-manager.users.kwull = import ../../../../home/kwull/${config.networking.hostName}.nix;
 }

@@ -18,47 +18,5 @@
     hostName = "artemis";
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = [ pkgs.zsh ];
-
-  programs = { 
-    zsh.enable = true;
-    nix-ld.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    curl
-    dnsutils
-    btop
-    htop
-    iotop
-    coreutils
-    ffmpeg
-    dig
-    e2fsprogs # badblocks
-    git
-    gptfdisk
-    hddtemp
-    lm_sensors
-    mc
-    mergerfs
-    ncdu
-    nmap
-    qemu
-    python3
-    smartmontools
-    tmux
-    mosh
-    screen
-    tree
-    wget
-    xfsprogs
-    iperf3
-    nerdfonts
-    unzip
-    bash
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-  ];  
-
+  system.stateVersion = "24.11";
 }
