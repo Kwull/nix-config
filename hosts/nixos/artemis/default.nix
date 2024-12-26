@@ -2,7 +2,7 @@
 {
   imports = [ 
     ./hardware-configuration.nix 
-    ./../../common/nixos-config.nix
+    ./../../common/global
   ];
 
   boot.loader.systemd-boot.enable = true;
