@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  name,
-  ...
-}:
+{ config, pkgs, name, ... }:
 
 {
   time.timeZone = "Europe/Warsaw";
