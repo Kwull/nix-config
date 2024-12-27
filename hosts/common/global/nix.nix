@@ -1,5 +1,4 @@
-{ inputs, lib, ... }: 
-let
+{ inputs, lib, ... }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in {
   nix = {
@@ -14,6 +13,7 @@ in {
         "flakes"
       ];
       warn-dirty = false;
+      flake-registry = ""; # Disable global flake registry
     };
     gc = {
       automatic = true;
