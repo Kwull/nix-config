@@ -1,5 +1,7 @@
-{ lib, ... }: 
-{
+{ inputs, lib, ... }: 
+let
+  flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+in {
   nix = {
     settings = {
       trusted-users = [
