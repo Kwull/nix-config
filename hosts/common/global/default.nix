@@ -10,8 +10,7 @@
       ./nix.nix
       ./openssh.nix
       ./tailscale.nix
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
+    ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
