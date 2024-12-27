@@ -7,7 +7,7 @@
     #home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
       inherit (self) outputs;
       pkgsLinux = import nixpkgs { system = "x86_64-linux"; };
