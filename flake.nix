@@ -9,6 +9,7 @@
 
   outputs = { nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
+      inherit (self) outputs;
       pkgsLinux = import nixpkgs { system = "x86_64-linux"; };
       pkgsLinuxUnstable = import nixpkgs-unstable { system = "x86_64-linux"; };
     in
